@@ -1,0 +1,103 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.planes {
+
+    background-color: v.$secundario;
+
+    &__titulo {
+        @include m.subrayado(v.$blanco, v.$primario);
+            text-align: center;
+            margin: 0;
+        }
+        text-align: center;
+        @include m.tablet { 
+            text-align: start;
+        }
+    &__texto {
+        color: v.$blanco;
+        line-height: 1.6;
+        font-size: 2rem;
+    }
+}
+
+.precios {
+    
+    display: flex;
+    flex-direction: column;
+
+    @include m.tablet { 
+        flex-direction: row;
+        justify-content: center;
+
+        /* Para achicar el contenedor de los precios y centrarlo */
+        max-width: 80rem;
+        margin-inline: auto; /* centrar horizontalmente */
+        margin-block-start: 10rem; /* Margin top */
+    }
+    
+    &__plan {
+        flex-grow: 1; /* Para que crezca en la proporcion de 1 */
+        background-color: v.$blanco;
+        padding: 16rem 4rem 4rem 4rem;
+        border-bottom: 1px solid #e1e1e1;
+        @include m.tablet {
+            border-bottom: none;
+            transition-property: transform;
+            transition-duration: 300ms;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
+        /* &. Se utiliza cuando la clase estan en el mismo nivel */
+        &.inicio {
+            @include m.iconoBg('../img/icono_inicio.svg');
+        }
+
+        &.negocio {
+            background-color: v.$primario;
+            @include m.iconoBg('../img/icono_negocio.svg');
+            order: -1; /* Para que en un celular se muestre 1° */
+
+            @include m.tablet { 
+                order: unset; /* Vuelve al orden del html */
+
+                margin: -5rem 0; /* Para se extienda hacia arriba */
+                border-radius: 2rem;
+
+                /* reescribimos parte del codigo para que quede centrado con los demas */
+                background-position: 50% 7rem;
+                padding-top: calc(16rem + 5rem);
+
+                z-index: 100; /* Le decimos que este elemento este adelante de los otros */
+            }
+        }
+
+        &.pro {
+            @include m.iconoBg('../img/icono_pro.svg');
+        }
+    }
+
+    &__texto {
+        font-size: 1.8rem;
+        text-align: center;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    &__listados {
+        
+
+        li {
+            text-align: center;
+            margin-bottom: 2rem;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+
+    }
+}

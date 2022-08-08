@@ -1,0 +1,11 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.estadisticas {
+
+    h2 {
+        @include m.subrayado(v.$secundario, v.$primario);
+            text-align: center;
+            margin: 0;
+        }
+}

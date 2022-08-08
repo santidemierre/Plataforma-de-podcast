@@ -50,3 +50,34 @@
     gap: $espaciado;
     grid-template-columns: repeat($columnas, 1fr);
 }
+
+@mixin bgImage($url, $colorDegradado) {
+    background-image: linear-gradient( $colorDegradado 0%, $colorDegradado 100% ), url( $url );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+}
+
+@mixin iconoBg($url) {
+    background-image: url($url);
+    background-repeat: no-repeat;
+    background-size: 10rem;
+    /* 50% horizontal y 2rem arriba y abajo */
+    background-position: 50% 2rem;
+}
+
+@mixin subrayado($colorTitulo, $colorSubrayado) {
+
+    font-size: 3.6rem;
+    display: inline-block; /* Para que la linea tome solo el espacio del texto */
+    color: $colorTitulo;
+    
+    &::after {
+        content: '';
+        background-color: $colorSubrayado;
+        height: 1rem;
+        width: 103%; /* Para que la linea sobrepase un poco el espacio hacia la derecha */
+        display: block;
+        margin-top: -1.4rem;
+    }
+}

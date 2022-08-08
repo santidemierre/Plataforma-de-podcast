@@ -1,0 +1,40 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.alcance {
+    background-color: v.$primario;
+
+    &__grid {
+        @include m.tablet { 
+            display: grid;
+            grid-template-columns: 2fr 1fr; 
+            align-items: center;
+            gap: 5rem;
+        }
+    }
+    &__imagen {
+        transition-property: transform;
+        transition-duration: 300ms;
+
+        &:hover {
+            transform: rotate(8deg) scale(1.1);
+        }
+    }
+    &__contenido {
+        h2 {
+            @include m.subrayado(v.$secundario, v.$blanco);
+            text-align: center;
+            margin: 0;
+            padding-bottom: 2rem;
+            
+            @include m.tablet { 
+                padding-bottom: 0;
+            }
+        }
+        p {
+            line-height: 1.5;
+            font-size: 2rem;
+            line-height: 1.5;
+        }
+    }
+}
